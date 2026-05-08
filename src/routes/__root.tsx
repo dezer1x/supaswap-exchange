@@ -111,7 +111,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Web3Providers>
-        <div className="relative min-h-screen bg-background text-foreground">
+        <div className="relative min-h-screen text-foreground">
           {/* Ambient background layers */}
           <div
             aria-hidden

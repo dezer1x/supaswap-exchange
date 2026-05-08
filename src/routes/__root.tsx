@@ -111,7 +111,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Web3Providers>
-        <div className="relative min-h-screen bg-background text-foreground">
+        <div className="relative min-h-screen text-foreground">
           {/* Ambient background layers */}
           <div
             aria-hidden
@@ -119,7 +119,7 @@ function RootComponent() {
           >
             {/* Grid pattern */}
             <div
-              className="absolute inset-0 opacity-[0.07]"
+              className="absolute inset-0 opacity-[0.10]"
               style={{
                 backgroundImage:
                   "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
@@ -140,21 +140,21 @@ function RootComponent() {
             />
             {/* Floating orbs */}
             <div
-              className="absolute -top-40 left-1/2 h-[520px] w-[720px] -translate-x-1/2 rounded-full opacity-40 blur-3xl animate-orb-1"
+              className="absolute -top-40 left-1/2 h-[520px] w-[720px] -translate-x-1/2 rounded-full opacity-70 blur-3xl animate-orb-1"
               style={{
                 background:
                   "radial-gradient(closest-side, oklch(0.58 0.24 295 / 0.65), transparent)",
               }}
             />
             <div
-              className="absolute top-1/3 -right-20 h-[460px] w-[560px] rounded-full opacity-30 blur-3xl animate-orb-2"
+              className="absolute top-1/3 -right-20 h-[460px] w-[560px] rounded-full opacity-60 blur-3xl animate-orb-2"
               style={{
                 background:
                   "radial-gradient(closest-side, oklch(0.78 0.14 210 / 0.6), transparent)",
               }}
             />
             <div
-              className="absolute bottom-0 -left-32 h-[420px] w-[520px] rounded-full opacity-25 blur-3xl animate-orb-3"
+              className="absolute bottom-0 -left-32 h-[420px] w-[520px] rounded-full opacity-50 blur-3xl animate-orb-3"
               style={{
                 background:
                   "radial-gradient(closest-side, oklch(0.65 0.22 320 / 0.55), transparent)",

@@ -332,7 +332,7 @@ function TokenInput({
           </button>
         )}
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 min-w-0">
         <button
           onClick={onPick}
           className="flex items-center gap-2 px-2.5 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] btn-press shrink-0"
@@ -351,7 +351,7 @@ function TokenInput({
             onAmountChange?.(v);
           }}
           className={cn(
-            "flex-1 bg-transparent outline-none text-right text-2xl md:text-3xl font-medium tracking-tight placeholder:text-muted-foreground/40",
+            "flex-1 min-w-0 w-full bg-transparent outline-none text-right text-2xl md:text-3xl font-medium tracking-tight placeholder:text-muted-foreground/40",
             readOnly && "text-muted-foreground",
           )}
         />

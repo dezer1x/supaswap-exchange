@@ -7,26 +7,28 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
+import { Web3Providers } from "@/components/Web3Providers";
+import { Header } from "@/components/Header";
+import { NetworkBanner } from "@/components/NetworkBanner";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h1 className="text-7xl font-bold gradient-text">404</h1>
+        <h2 className="mt-4 text-xl font-semibold">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          The page you're looking for doesn't exist.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="mt-6 inline-flex h-10 items-center rounded-full px-5 text-sm font-medium gradient-bg btn-press"
+        >
+          Back to Swap
+        </Link>
       </div>
     </div>
   );
@@ -35,33 +37,20 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
-        </div>
+        <h1 className="text-xl font-semibold">Something went wrong</h1>
+        <p className="mt-2 text-sm text-muted-foreground break-words">{error.message}</p>
+        <button
+          onClick={() => {
+            router.invalidate();
+            reset();
+          }}
+          className="mt-6 inline-flex h-10 items-center rounded-full px-5 text-sm font-medium gradient-bg btn-press"
+        >
+          Try again
+        </button>
       </div>
     </div>
   );
@@ -72,19 +61,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "SupaDupa — DEX on Sepolia" },
+      {
+        name: "description",
+        content:
+          "SupaDupa is a fast, minimal decentralized exchange on the Ethereum Sepolia testnet. Swap tokens, provide liquidity, claim from the faucet.",
+      },
+      { property: "og:title", content: "SupaDupa — DEX on Sepolia" },
+      {
+        property: "og:description",
+        content: "Swap, pool, and explore on the SupaDupa testnet DEX.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
       },
     ],
   }),
@@ -96,11 +93,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="dark">
         {children}
         <Scripts />
       </body>
@@ -113,7 +110,53 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <Web3Providers>
+        <div className="relative min-h-screen bg-background text-foreground">
+          {/* Subtle background glow */}
+          <div
+            aria-hidden
+            className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+          >
+            <div className="absolute -top-40 left-1/2 h-[480px] w-[680px] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
+              style={{
+                background:
+                  "radial-gradient(closest-side, oklch(0.58 0.24 295 / 0.55), transparent)",
+              }}
+            />
+            <div className="absolute top-1/3 right-0 h-[420px] w-[520px] rounded-full opacity-20 blur-3xl"
+              style={{
+                background:
+                  "radial-gradient(closest-side, oklch(0.78 0.14 210 / 0.55), transparent)",
+              }}
+            />
+          </div>
+
+          <Header />
+          <NetworkBanner />
+          <main className="mx-auto w-full max-w-7xl px-4 py-8 md:py-12">
+            <Outlet />
+          </main>
+          <footer className="border-t border-white/[0.06] mt-16">
+            <div className="mx-auto max-w-7xl px-4 py-6 text-xs text-muted-foreground flex flex-wrap items-center justify-between gap-3">
+              <span>© {new Date().getFullYear()} SupaDupa Protocol · Sepolia testnet</span>
+              <span>Not financial advice. Test tokens only.</span>
+            </div>
+          </footer>
+          <Toaster
+            theme="dark"
+            position="bottom-right"
+            duration={5000}
+            toastOptions={{
+              style: {
+                background: "rgba(18,18,26,0.92)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                color: "#F8FAFC",
+                backdropFilter: "blur(12px)",
+              },
+            }}
+          />
+        </div>
+      </Web3Providers>
     </QueryClientProvider>
   );
 }

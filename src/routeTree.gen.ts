@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PoolsRouteImport } from './routes/pools'
+import { Route as FaucetRouteImport } from './routes/faucet'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PoolsRoute = PoolsRouteImport.update({
+  id: '/pools',
+  path: '/pools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaucetRoute = FaucetRouteImport.update({
+  id: '/faucet',
+  path: '/faucet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/faucet': typeof FaucetRoute
+  '/pools': typeof PoolsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/faucet': typeof FaucetRoute
+  '/pools': typeof PoolsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/faucet': typeof FaucetRoute
+  '/pools': typeof PoolsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/analytics' | '/faucet' | '/pools'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/analytics' | '/faucet' | '/pools'
+  id: '__root__' | '/' | '/analytics' | '/faucet' | '/pools'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  FaucetRoute: typeof FaucetRoute
+  PoolsRoute: typeof PoolsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pools': {
+      id: '/pools'
+      path: '/pools'
+      fullPath: '/pools'
+      preLoaderRoute: typeof PoolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faucet': {
+      id: '/faucet'
+      path: '/faucet'
+      fullPath: '/faucet'
+      preLoaderRoute: typeof FaucetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  FaucetRoute: FaucetRoute,
+  PoolsRoute: PoolsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

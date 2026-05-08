@@ -112,21 +112,60 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <Web3Providers>
         <div className="relative min-h-screen bg-background text-foreground">
-          {/* Subtle background glow */}
+          {/* Ambient background layers */}
           <div
             aria-hidden
             className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
           >
-            <div className="absolute -top-40 left-1/2 h-[480px] w-[680px] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
+            {/* Grid pattern */}
+            <div
+              className="absolute inset-0 opacity-[0.07]"
               style={{
-                background:
-                  "radial-gradient(closest-side, oklch(0.58 0.24 295 / 0.55), transparent)",
+                backgroundImage:
+                  "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+                backgroundSize: "56px 56px",
+                maskImage:
+                  "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse at center, black 40%, transparent 80%)",
               }}
             />
-            <div className="absolute top-1/3 right-0 h-[420px] w-[520px] rounded-full opacity-20 blur-3xl"
+            {/* Noise texture */}
+            <div
+              className="absolute inset-0 opacity-[0.035] mix-blend-overlay"
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+              }}
+            />
+            {/* Floating orbs */}
+            <div
+              className="absolute -top-40 left-1/2 h-[520px] w-[720px] -translate-x-1/2 rounded-full opacity-40 blur-3xl animate-orb-1"
               style={{
                 background:
-                  "radial-gradient(closest-side, oklch(0.78 0.14 210 / 0.55), transparent)",
+                  "radial-gradient(closest-side, oklch(0.58 0.24 295 / 0.65), transparent)",
+              }}
+            />
+            <div
+              className="absolute top-1/3 -right-20 h-[460px] w-[560px] rounded-full opacity-30 blur-3xl animate-orb-2"
+              style={{
+                background:
+                  "radial-gradient(closest-side, oklch(0.78 0.14 210 / 0.6), transparent)",
+              }}
+            />
+            <div
+              className="absolute bottom-0 -left-32 h-[420px] w-[520px] rounded-full opacity-25 blur-3xl animate-orb-3"
+              style={{
+                background:
+                  "radial-gradient(closest-side, oklch(0.65 0.22 320 / 0.55), transparent)",
+              }}
+            />
+            {/* Vignette */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.55) 100%)",
               }}
             />
           </div>

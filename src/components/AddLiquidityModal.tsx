@@ -150,7 +150,7 @@ function PoolInput({
           value={amount}
           readOnly={readOnly}
           onChange={(e) => onAmount?.(e.target.value.replace(/[^0-9.]/g, ""))}
-          className="flex-1 bg-transparent outline-none text-right text-2xl font-medium tracking-tight placeholder:text-muted-foreground/40"
+          className="flex-1 min-w-0 w-full bg-transparent outline-none text-right text-2xl font-medium tracking-tight placeholder:text-muted-foreground/40 truncate"
         />
       </div>
     </div>

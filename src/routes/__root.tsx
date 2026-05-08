@@ -74,12 +74,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "SupaDupa — DEX on Sepolia" },
-      { name: "description", content: "SupaSwap Exchange is a decentralized exchange web application for trading tokens on Ethereum Sepolia testnet." },
-      { property: "og:description", content: "SupaSwap Exchange is a decentralized exchange web application for trading tokens on Ethereum Sepolia testnet." },
-      { name: "twitter:description", content: "SupaSwap Exchange is a decentralized exchange web application for trading tokens on Ethereum Sepolia testnet." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18de9107-c3a8-4b8c-9d0c-3f7a96318e2c/id-preview-3aab7618--2efe756a-40bf-49a1-b6cc-cc40fb099490.lovable.app-1778236435940.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18de9107-c3a8-4b8c-9d0c-3f7a96318e2c/id-preview-3aab7618--2efe756a-40bf-49a1-b6cc-cc40fb099490.lovable.app-1778236435940.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -117,61 +111,22 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Web3Providers>
-        <div className="relative min-h-screen text-foreground">
-          {/* Ambient background layers */}
+        <div className="relative min-h-screen bg-background text-foreground">
+          {/* Subtle background glow */}
           <div
             aria-hidden
             className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
           >
-            {/* Grid pattern */}
-            <div
-              className="absolute inset-0 opacity-[0.10]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-                backgroundSize: "56px 56px",
-                maskImage:
-                  "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-              }}
-            />
-            {/* Noise texture */}
-            <div
-              className="absolute inset-0 opacity-[0.035] mix-blend-overlay"
-              style={{
-                backgroundImage:
-                  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-              }}
-            />
-            {/* Floating orbs */}
-            <div
-              className="absolute -top-40 left-1/2 h-[520px] w-[720px] -translate-x-1/2 rounded-full opacity-70 blur-3xl animate-orb-1"
+            <div className="absolute -top-40 left-1/2 h-[480px] w-[680px] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
               style={{
                 background:
-                  "radial-gradient(closest-side, oklch(0.58 0.24 295 / 0.65), transparent)",
+                  "radial-gradient(closest-side, oklch(0.58 0.24 295 / 0.55), transparent)",
               }}
             />
-            <div
-              className="absolute top-1/3 -right-20 h-[460px] w-[560px] rounded-full opacity-60 blur-3xl animate-orb-2"
+            <div className="absolute top-1/3 right-0 h-[420px] w-[520px] rounded-full opacity-20 blur-3xl"
               style={{
                 background:
-                  "radial-gradient(closest-side, oklch(0.78 0.14 210 / 0.6), transparent)",
-              }}
-            />
-            <div
-              className="absolute bottom-0 -left-32 h-[420px] w-[520px] rounded-full opacity-50 blur-3xl animate-orb-3"
-              style={{
-                background:
-                  "radial-gradient(closest-side, oklch(0.65 0.22 320 / 0.55), transparent)",
-              }}
-            />
-            {/* Vignette */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.55) 100%)",
+                  "radial-gradient(closest-side, oklch(0.78 0.14 210 / 0.55), transparent)",
               }}
             />
           </div>

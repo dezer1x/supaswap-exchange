@@ -351,7 +351,7 @@ function TokenInput({
             onAmountChange?.(v);
           }}
           className={cn(
-            "flex-1 bg-transparent outline-none text-right text-2xl md:text-3xl font-medium tracking-tight placeholder:text-muted-foreground/40",
+            "flex-1 min-w-0 w-full bg-transparent outline-none text-right text-2xl md:text-3xl font-medium tracking-tight placeholder:text-muted-foreground/40 truncate",
             readOnly && "text-muted-foreground",
           )}
         />

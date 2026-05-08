@@ -74,6 +74,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "SupaDupa — DEX on Sepolia" },
+      { name: "description", content: "SupaSwap Exchange is a decentralized exchange web application for trading tokens on Ethereum Sepolia testnet." },
+      { property: "og:description", content: "SupaSwap Exchange is a decentralized exchange web application for trading tokens on Ethereum Sepolia testnet." },
+      { name: "twitter:description", content: "SupaSwap Exchange is a decentralized exchange web application for trading tokens on Ethereum Sepolia testnet." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18de9107-c3a8-4b8c-9d0c-3f7a96318e2c/id-preview-3aab7618--2efe756a-40bf-49a1-b6cc-cc40fb099490.lovable.app-1778236435940.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18de9107-c3a8-4b8c-9d0c-3f7a96318e2c/id-preview-3aab7618--2efe756a-40bf-49a1-b6cc-cc40fb099490.lovable.app-1778236435940.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
